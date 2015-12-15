@@ -1,0 +1,14 @@
+\section{Benchmarks}
+
+The following tests for each of the previously mentioned kernel modifications were performed individually on an Arch Linux Virtual Machine. To empirically measure the throughput and turnaround time of various workloads, Prime95 was used to stress test various kernel builds. In addition, a custom built C++ program was used to run a synthetic workload on 16 concurrent child processes, and calculated the average time required to finish each process upon completion.
+
+To properly establish a baseline for the modified Kernels, the following benchmarks were run on a purely stock build of Linux 4.2.6:
+\begin{itemize}
+	\item Prime 95 Benchmark, sampled when running 25 iterations of 2048K FFT on 1, 2 and 4 cores.
+	\item SyntheticProcess, our custom C++ synthetic load program, running 16 child processes each running a synthetic load and then averaging the completion time of all children.
+	\item A composite test where Prime 95 and SyntheticProcess are run in parallel to evaluate CFS's ability to share between entirely separate pid parents.
+\end{itemize}
+
+The results of the above tests are listed below in Figure 3.
+
+\textbf{1 Pick Next Entity Benchmark}

@@ -1,0 +1,36 @@
+\documentclass[twocolumn]{article}
+
+\usepackage{layouts}
+\usepackage{geometry}
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{listings}
+\usepackage{graphicx}
+
+\lstset { %
+	language=C++,
+	basicstyle=\footnotesize,% basic font setting	
+	numbers=left, 
+	numberstyle=\tiny, 
+	numbersep=4pt, 
+	%frame = single, 
+	%framexleftmargin=15pt
+}
+
+\geometry{letterpaper, portrait, margin=1in}
+
+\begin{document}
+\title {Tuning the Linux CFS Scheduler}
+\author{Stuart Bowman}
+\maketitle
+
+\input{Intro}
+
+\input{History}
+
+\input{Flow}
+
+\input{Mod}
+
+\input{Bench}
+
+\end{document}
