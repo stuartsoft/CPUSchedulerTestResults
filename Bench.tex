@@ -15,13 +15,34 @@ The benchmarks used were as follows:
 	\item[Test1] A modified version of the stock Kernel, implementing the pick\_next\_task psudocode changes detailed above.
 	\item[Test2] A stock build of Linux 4.2.6 with the following kernel parameters configured using \texttt{sysctl}:
 	
-		sched\_rt\_period\_us = 10, 
+		sched\_rt\_period\_us = 10,
 		
-		sched\_rt\_runtime\_us = 10, 
+		sched\_rt\_runtime\_us = 10,
 		
-		sched\_rr\_timeslice\_ms = 1, 
+		sched\_rr\_timeslice\_ms = 1,
 		
 		sched\_cfs\_bandwidth\_slice\_us = 1
 	\item[Test3] A modified version of the stock Kernel, implementing the CFS Bandwidth and Quota changes detailed above. Specifically, RUNTIME\_INF was set to 10\% of the CFS bandwidth period (previously it was unrestricted), refill\_cfs\_bandwidth\_runtime() was short circuited to disable refilling alloted bandwidth, and the sched.h preprocessor constant MAX\_SHARES was changed from 2\^18 to 2\^9.
 \end{description}
 
+\textbf{Benchmark Results}
+
+\begin{figure}[hb]
+	\includegraphics[width=1.0\columnwidth]{images/P95}
+	\caption{Displaying the default values for the stock Arch Linux Kernel}
+\end{figure}
+
+\begin{figure}[hb]
+	\includegraphics[width=1.0\columnwidth]{images/Synthetic}
+	\caption{Displaying the default values for the stock Arch Linux Kernel}
+\end{figure}
+
+\begin{figure}[hb]
+	\includegraphics[width=1.0\columnwidth]{images/CompositeP95}
+	\caption{Displaying the default values for the stock Arch Linux Kernel}
+\end{figure}
+
+\begin{figure}[hb]
+	\includegraphics[width=1.0\columnwidth]{images/CompositeSynthetic}
+	\caption{Displaying the default values for the stock Arch Linux Kernel}
+\end{figure}
