@@ -1,9 +1,9 @@
 \section{Scheduler Modifications}
 
-With the above scheduling flow control in mind, we sought out to change and tune the CFS system in some meaningful way. Among the many traits a scheduler is desired to exhibit, we decided to modify the scheduler to measure and tweak it's throughput, scheduling period, and individual process runtime. These tests were not necessarily designed to improve the kernel, but rather to explicitly test how various properties affect it's performance. There were three main source modifications we attempted:
+With the above scheduling flow control in mind, we sought out to change and tune the CFS system in some meaningful way. Among the many traits a scheduler is desired to exhibit, we decided to modify the scheduler to measure and tweak its throughput, scheduling period, and individual process runtime. These tests were not necessarily designed to improve the Kernel, but rather to explicitly test how various properties affect its performance. There were three main source modifications we attempted:
 \begin{enumerate}
 	\item Modify the logic behind which process is chosen in \texttt{pick\_next\_entity()}
-	\item Change the kernel parameters at runtime to cause frequent context switching
+	\item Change the Kernel parameters at runtime to cause frequent context switching
 	\item Modify CFS bandwidth and quota to cause artificial throttling
 \end{enumerate}
 
@@ -12,7 +12,7 @@ With the above scheduling flow control in mind, we sought out to change and tune
 
 \vspace{1pc}
 
-The first and most simplistic change involved modifying the operation of \texttt{pick\_next\_entity()} in fair.c. As mentioned above, this function is the last authority queried in the scheduling flow control of CFS, which means process traffic can be changed here. A simplified psudocode version of \texttt{pick\_next\_entity()} is as follows:
+The first, and most simplistic change involved modifying the operation of \texttt{pick\_next\_entity()} in fair.c. As mentioned above, this function is the last authority queried in the scheduling flow control of CFS, which means process traffic can be changed here. A simplified psudocode version of \texttt{pick\_next\_entity()} is as follows:
 \begin{lstlisting}
 pick_next_entity(cfs_rq, currentProcess)
 
@@ -58,11 +58,11 @@ return se
 \noindent\textbf{2 Changing Kernel Parameters}
 \vspace{1pc}
 
-Changing kernel parameters is not terribly difficult and can be done fairly easily from several different source files before compilation. Areas of focus include the targeted preemption latency and minimum preemption granularity in fair.c, min/max priority niceness values in prio.h, \texttt{SCHED\_LOAD\_SCALE} (which adjusts the number of shares available for the root group) and \texttt{RUNTIME\_INF} for cfs\_rq quota in sched.h. (landley.com)
+Changing Kernel parameters is not terribly difficult and can be done fairly easily from several different source files before compilation. Areas of focus include the targeted preemption latency and minimum preemption granularity in fair.c, min/max priority niceness values in prio.h, \texttt{SCHED\_LOAD\_SCALE} (which adjusts the number of shares available for the root group) and \texttt{RUNTIME\_INF} for cfs\_rq quota in sched.h. [10]
 
-Some kernel parameters have the benefit of being publically readable and  writable during runtime. The utility \texttt{sysctl} can be used to read and write to kernel parameters at runtime, changing the behavior of everything from average Round Robin time slicing to CFS bandwidth.
+Some Kernel parameters have the benefit of being publically readable and  writable during runtime. The utility \texttt{sysctl} can be used to read and write to Kernel parameters at runtime, changing the behavior of everything from average Round Robin time slicing to CFS bandwidth.
 
-Additionally, many kernel parameters can be read from the /proc folder, providing a secondary resource for details on cgroups, hardware info and process specific information.
+Additionally, many Kernel parameters can be read from the /proc folder, providing a secondary resource for details on cgroups, hardware info and process specific information.
 
 \begin{figure}[hb]
 	\includegraphics[width=1.0\columnwidth]{images/sysctl}
@@ -82,4 +82,4 @@ As it turns out, the Linux scheduling system makes use of time in any way it pos
 	\item [runtime\_inf] changes the default quota assigned to CFS (default value is disabled, meaning that CFS has unconstrained use of the cpu)
 \end{description}
 
-(blaess)(landley)
+[7][8][10]

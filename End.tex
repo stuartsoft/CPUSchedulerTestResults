@@ -1,0 +1,28 @@
+\section{Summary}
+
+In summary, the Linux CFS scheduling system is a vastly robust and highly configurable system for managing and running processes in a real-time environment. It is designed for a wide array of hardware, ranging from  smartphones to desktop computers to corporate servers.
+
+One of the biggest discoveries of this study has been that, although the CFS scheduler can be highly sensitive to particular Kernel source code changes, it is also robust enough to adapt and change it's behavior so that consistent behavior can be expected from it even when individual components are missing or compromised. And that is likely one of the biggest hurtles in CPU scheduling today, to make Kernels that are adaptable enough for everyone's needs, but also robust enough to adapt under a variety of constraints.
+
+
+\section{Citations}
+
+[1] M. Tim Jones, IBM. (2009, Dec). "Inside the Linux 2.6 Completely Fair Scheduler" . [Online] http://www.ibm.com/developerworks/library/l-completely-fair-scheduler/
+
+[2] Red Hat. "Scheduler Design CFS" . [Online] http://people.redhat.com/mingo/cfs-scheduler/sched-design-CFS.txt
+
+[3] Kernel.org. "CFS Bandwidth Control" . [Online] https://www.Kernel.org/doc/Documentation/scheduler/sched-bwc.txt
+
+[4] Kernel.org. "Red-black Trees" . [Online] https://www.Kernel.org/doc/Documentation/rbtree.txt
+
+[5] tbazant, Open Suse (2013, Nov). "Tuning the Task Scheduler" . [Online] https://activedoc.opensuse.org/book/opensuse-system-analysis-and-tuning-guide/chapter-14-tuning-the-task-scheduler
+
+[6] Guy Rutenberg (2007, Sept). "Profiling code using clock\_gettime" . [Online] http://www.guyrutenberg.com/2007/09/22/profiling-code-using-clock\_gettime/
+
+[7] Christophe Blaess (2012, Jan). "Linux 3.2 - CFS CPU Bandwidth" . [Online] http://www.blaess.fr/christophe/2012/01/07/linux-3-2-cfs-cpu-bandwidth-english-version/
+
+[8] Red Hat. "CPU Scheduling" . [Online] https://access.redhat.com/documentation/en-US/Red\_Hat\_Enterprise\_Linux/6/html/Performance\_Tuning\_Guide/s-cpu-scheduler.html
+
+[9] Martin B. J. (2013, Jul) "How to Pick Next Task" . [Online] http://martinbj2008.github.io/blog/2013/07/26/how-to-pick-next-task/
+
+[10] Paul Turner, Bharata B Rao, Nikhil Rao (2010) "CPU bandwidth control for CFS" . [Online] http://landley.net/kdocs/ols/2010/ols2010-pages-245-254.pdf
